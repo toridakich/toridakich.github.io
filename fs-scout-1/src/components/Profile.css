@@ -1,0 +1,50 @@
+.line{
+    text-align: center;
+}
+.name{
+    color:white;
+    font-size: 40px;
+}
+
+.name:hover{
+    color: #002D72;
+}
+
+.school{
+
+    font-size: 20px;
+}
+
+.popup{
+    position: fixed;  
+    width: 25%;  
+    height: 85%;  
+    top: 0;  
+    left: 0;  
+    right: 0;  
+    bottom: 0;  
+    margin: auto;  
+    background-color:white; 
+    border-radius: 25px;
+    overflow:auto;
+    text-align: center;
+    
+    
+}
+
+.popup h6{
+    padding-top: 20px;
+}
+.popup div{
+    padding: 20px;
+}
+
+#short{
+    height: 100%;
+    background-color: red;
+    padding-bottom: 100%;
+}
+
+#aptLength{
+    padding-bottom: 20px;
+}

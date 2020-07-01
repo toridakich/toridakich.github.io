@@ -1,0 +1,99 @@
+.newProf{
+    background-color: red;
+}
+.addNew{
+    background-color: red;
+}
+
+.btns{
+    background-color: #002D72;
+    position: absolute;
+    float: right;
+    top: 15px;
+    right: 50px;
+    color: white;
+}
+
+.btns:hover{
+  color: red;
+}
+
+.btn2{
+    width: 100%;
+}
+
+.form-popup {
+    
+    position: fixed;  
+    width: 25%;  
+    height: 85%;  
+    top: 0;  
+    left: 0;  
+    right: 0;  
+    bottom: 0;  
+    margin: auto;  
+    background-color:white; 
+    border-radius: 25px;
+    overflow:auto;
+    text-align: center;
+
+    display  : grid;
+    grid-template-columns: 1fr 2fr;
+   
+  
+  }
+  
+  input {
+    width: 100%;
+    padding: 12px 20px;
+    padding-right: 100px;
+    border-radius: 4px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  .form-container{
+      padding: 20px;
+  }
+ /* .form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+  }
+
+  .form-container input[type=text], .form-container input[type=number], .form-container input[type=date] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+  }
+
+  .form-container input[type=text]:focus, .form-container input[type=number]:focus,  .form-container input[type=date]:focus{
+    background-color: #ddd;
+    outline: none;
+  }
+
+  .form-container .btn2 {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+  }
+
+  .form-container .btn2:hover {
+    opacity: 1;
+  } */

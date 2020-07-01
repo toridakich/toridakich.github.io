@@ -1,0 +1,70 @@
+
+.App{
+  
+  background-color: red;
+}
+
+.App-header {
+  background-color: #002D72;
+  height: 100px;
+  width:100%;
+  color: white;
+}
+
+.App-header img{
+  text-align: left;
+  height: 100px;
+  width:100px;
+}
+
+h1{
+  font-size: 90px;
+}
+.plyrs{
+  color: white;
+  text-align: center;
+  font-family: "MLB Philadelphia Phillies 1980";
+  font-size: 50px;
+  padding: 20px;
+}
+
+button{
+  background-color: red;
+  border: none;
+  padding: 15px 32px;
+  text-decoration: none;
+  color:white;
+  
+  
+}
+
+#list{
+  padding-bottom: 100px;
+}
+
+#logins{
+  position: fixed;  
+  width: 100%;  
+  height: 100%;  
+  top: 0;  
+  left: 0;  
+  right: 0;  
+  bottom: 0;  
+  margin: auto;  
+  background-color:white; 
+  z-index: 1;
+  overflow:auto;
+  text-align: center;
+
+  display  : grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+#searchBar{
+  width: 200px;
+}
