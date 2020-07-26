@@ -15,6 +15,7 @@ var Eval = function(eval){
     this.weight = eval.weight;
     this.position = eval.position;
     this.writer = eval.writer;
+    this.video = eval.video;
 }
 
 Eval.findAllEvals = function(result){
@@ -56,5 +57,30 @@ Eval.createEvals = function(newEval, result){
     });
 };
 
+Eval.removeEval = (evalId, result) => {
+    mysqlConn.query("DELETE FROM user.evaluation WHERE evaluation_id = ?", evalId, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+      } else {
+        result(null, res);
+      }
+    });
+  };
+
+  Eval.updateEvalById = (evaluation, result) => {
+    mysqlConn.query(
+      "UPDATE user.evaluation SET date = ?, location = ?, event_type = ?, grade = ?, notes = ?, first_name = ?, last_name = ?, school_id = ?, height = ?, weight = ?, position = ? WHERE evaluation_id = ?",
+      [evaluation.date, evaluation.location, evaluation.event_type, evaluation.grade, evaluation.notes, evaluation.first_name, evaluation.last_name, evaluation.school_id, evaluation.height, evaluation.weight, evaluation.position, evaluation.evaluation_id],
+      (err, res) => {
+        if (err) {
+          console.log("error: ", err);
+          result(null, err);
+        } else {
+          result(null, res);
+        }
+      }
+    );
+  };
 
 module.exports = Eval;

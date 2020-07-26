@@ -1,7 +1,7 @@
 const Eval = require('../models/evalModel');
 
 module.exports = class evalController{
-    constructor(){}
+    
 
     getAllEvals(){
         return new Promise((resolve, reject)=>{
@@ -51,9 +51,10 @@ module.exports = class evalController{
                 height: evaluation.height,
                 weight: evaluation.weight,
                 position: evaluation.position,
-                writer: evaluation.writer
+                writer: evaluation.writer,
+                video: evaluation.video
             };
-            console.log("hey");
+            
             console.log(evalObj);
             const newEvaluation = new Eval(evalObj);
 
@@ -63,6 +64,32 @@ module.exports = class evalController{
             })
 
         })
+    }
+
+    deleteEval(evalId){
+        return new Promise((resolve, reject) =>{
+            Eval.removeEval(evalId, (err, res) =>{
+                if(err) reject(err);
+                resolve(res);
+            })
+        })
+    }
+
+    updateEvaluation(evaluation){
+        
+      return new Promise((resolve, reject) =>{
+          
+              
+                  Eval.updateEvalById(evaluation, (err, res)=>{
+                      if(err){
+                          reject(err);
+                      } else{
+                          resolve(res);
+                      }
+                  });
+              }
+      );
+      
     }
 
 }
