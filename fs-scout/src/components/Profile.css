@@ -39,6 +39,12 @@
     padding: 20px;
 }
 
+.deleteAlert{
+    width: 15%;
+    background-color: red;
+    z-index: 8;
+}
+
 #short{
     height: 100%;
     background-color: red;
@@ -47,4 +53,19 @@
 
 #aptLength{
     padding-bottom: 20px;
+}
+
+#searchBar{
+    position: absolute;
+    float: right;
+    top: 20px;
+    right: 200px;
+    padding: 20px;
+    height: 50px;
+    border: none;
+}
+
+.deletebtn{
+    width: 75%;
+    margin-bottom: 30px;
 }

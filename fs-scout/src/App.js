@@ -20,8 +20,9 @@ class App extends Component {
       first_name: null,
       last_name: null,
       users: [],
-      
-      count: []
+      filteredEvals: [],
+      count: [],
+      id: null
     };
     this.addEval = this.addEval.bind(this);
     this.setUserId = this.setUserId.bind(this);
@@ -30,7 +31,7 @@ class App extends Component {
     this.ifSupervisor = this.ifSupervisor.bind(this);
     this.getUserById = this.getUserById.bind(this);
     this.changeEval = this.changeEval.bind(this);
-    
+    this.deleteEvalFiltered =this.deleteEvalFiltered.bind(this);
   } 
   
 
@@ -41,7 +42,8 @@ class App extends Component {
           (result) => {
             
           this.setState({ 
-            evals: result
+            evals: result,
+            filteredEvals: result
           });
         },
           (error)=>{
@@ -66,7 +68,8 @@ class App extends Component {
     .then(function(res){
         if(res !== "No evaluations found"){
           currentComponent.setState({
-            evals: currentComponent.state.evals.concat(res)
+            evals: currentComponent.state.evals.concat(res),
+            filteredEvals: currentComponent.state.filteredEvals.concat(res)
           })
         }
         
@@ -121,15 +124,29 @@ class App extends Component {
     addEval(evaluation){
       console.log('added');
       this.setState({
-        evals: this.state.evals.concat([evaluation])
+        evals: this.state.evals.concat([evaluation]),
+        filteredEvals: this.state.filteredEvals.concat([evaluation])
       })
     }
 
     changeEval(evaluations){
       console.log('Updating');
       this.setState({
-        evals: evaluations
+        filteredEvals: evaluations
       })
+    }
+
+    deleteEvalFiltered(evaluationId){
+      this.setState({
+        filteredEvals: this.state.filteredEvals.filter(function(evaluation){
+          return evaluation.evaluation_id !== evaluationId
+        }),
+        evals: this.state.evals.filter(function(evaluation){
+          return evaluation.evaluation_id !== evaluationId
+        })
+      })
+
+      
     }
 
     setUserId(id, type, firstName, lastName){
@@ -143,16 +160,30 @@ class App extends Component {
       
     }
 
-  
+    componentDidUpdate(prevProps, prevState) {
+      // This function runs whenever the props or state of this component change
+      if(this.state.scout_type !== prevState.scout_type) {
+        
+        // The scout type has changed, load applicable evals
+        if(this.state.scout_type === "Director") {
+          // User is Director
+          this.ifDirector();
+          
+        } else if(this.state.scout_type === "Supervisor" ){
+          console.log("entered");
+          console.log(this.state.users);
+          // User is Supervisor
+          console.log(this.state.users);
+          for(var i= 0; i < this.state.users.length; ++i){
+            this.getUserById(this.state.users[i]);
+          }
+        }
+        
+      }
+    }
   
 
   render(){
-    console.log(this.state.evals)
-
-    if(this.state.scout_type === "Director"){
-      this.ifDirector();
-    }
-    
     
     if(this.state.scout_type === "Supervisor" && this.state.count <=1){
       
@@ -189,7 +220,7 @@ class App extends Component {
         <div id='list'>
           <ul id="items">
           
-          <Profile evals={this.state.evals} search={this.changeEval}/>
+          <Profile evals={this.state.evals} filteredEvals={this.state.filteredEvals} search={this.changeEval} updateEvals = {this.deleteEvalFiltered} currentUser = {this.state.user_id}/>
           </ul>
           
         </div>

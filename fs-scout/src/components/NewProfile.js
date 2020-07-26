@@ -17,6 +17,7 @@ class NewProfile extends Component {
             event_type: null,
             grade: null,
             notes: null,
+            video: null,
             showForm: false
             
         }
@@ -170,7 +171,7 @@ class NewProfile extends Component {
         e.preventDefault();
         let currentComponent = this;
         console.log(this.props.userId);
-        const{first_name, last_name, school_id, height, weight, position, date, location, event_type, grade, notes} = this.state;
+        const{first_name, last_name, school_id, height, weight, position, date, location, event_type, grade, notes, video} = this.state;
         const user_id = this.props.userId;
         const writer = this.props.firstName + " " + this.props.lastName;
         const prof = {
@@ -186,6 +187,7 @@ class NewProfile extends Component {
             event_type,
             grade,
             notes,
+            video,
             writer
         };
         console.log({

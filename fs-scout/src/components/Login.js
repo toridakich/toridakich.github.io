@@ -37,7 +37,6 @@ class Login extends Component {
             }
             if(response.scout_type === "Supervisor"){
                 
-                
                 currentComponent.props.checkSupervisor(response);
                 
                 
